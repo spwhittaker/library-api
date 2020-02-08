@@ -56,5 +56,20 @@ describe('Users', () => {
           });
         });
     });
+
+    it('validates the email address', done => {
+      request(app)
+        .post('/user')
+        .send({
+          firstName: 'John',
+          lastName: 'Willoughby',
+          email: 'wily.com',
+          password: 'somethingSecure',
+        })
+        .then(res => {
+          expect(res.body.errors.email).toEqual('Invalid email address');
+        });
+      done();
+    });
   });
 });

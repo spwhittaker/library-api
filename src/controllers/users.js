@@ -7,7 +7,13 @@ exports.create = (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
-  user.save().then(() => {
-    res.status(201).json(user.sanitise());
-  });
+  user
+    .save()
+    .then(() => {
+      res.status(201).json(user.sanitise());
+    })
+    .catch(error => {
+      // console.log(error);
+      res.sendStatus(500);
+    });
 };

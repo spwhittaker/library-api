@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const isEmail = require('isemail');
 
 const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  email: String,
+  email: {
+    type: String,
+    validate: [isEmail.validate, 'Invalid email address'],
+  },
   password: String,
 });
 
