@@ -8,6 +8,6 @@ exports.create = (req, res) => {
     password: req.body.password,
   });
   user.save().then(() => {
-    res.status(201).json(user.toObject());
+    res.status(201).json(user.sanitise());
   });
 };

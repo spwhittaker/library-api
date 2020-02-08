@@ -22,6 +22,13 @@ userSchema.pre('save', function encryptPassword(next) {
     });
   }
 });
+
+userSchema.methods.sanitise = function() {
+  const { password, ...rest } = this.toObject();
+
+  return rest;
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
