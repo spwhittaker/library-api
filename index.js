@@ -7,7 +7,9 @@ mongoose.connect(
   process.env.DATABASE_CONN,
   { useNewUrlParser: true, useUnifiedTopology: true },
   err => {
-    console.log(err);
+    if (err) {
+      console.log(err);
+    }
     app.listen(APP_PORT, () => {
     console.log(`Now serving your Express app at http://localhost:${APP_PORT}`); // eslint-disable-line
     });

@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: [isEmail.validate, 'Invalid email address'],
   },
-  password: String,
+  password: {
+    type: String,
+    validate: [pword => pword.length >= 8, 'Password must be at least 8 characters long'],
+  },
 });
 
 userSchema.pre('save', function encryptPassword(next) {

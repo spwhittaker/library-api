@@ -67,7 +67,22 @@ describe('Users', () => {
           password: 'somethingSecure',
         })
         .then(res => {
-          expect(res.body.errors.email).toEqual('Invalid email address');
+          expect(res.body.errors.email).toBe('Invalid email address');
+        });
+      done();
+    });
+
+    it('validates the password', done => {
+      request(app)
+        .post('/user')
+        .send({
+          firstName: 'John',
+          lastName: 'Willoughby',
+          email: 'wily@doctor.com',
+          password: 'summat',
+        })
+        .then(res => {
+          expect(res.body.errors.password).toBe('Password must be at least 8 characters long');
         });
       done();
     });
