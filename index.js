@@ -11,7 +11,7 @@ mongoose.connect(
       console.log(err);
     }
     app.listen(APP_PORT, () => {
-    console.log(`Now serving your Express app at http://localhost:${APP_PORT}`); // eslint-disable-line
+    (`Now serving your Express app at http://localhost:${APP_PORT}`); // eslint-disable-line
     });
   },
 );
