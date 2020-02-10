@@ -2,7 +2,7 @@
 const request = require('supertest');
 
 exports.signUp = (app, data) => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     request(app)
       .post('/user')
       .send(data)
