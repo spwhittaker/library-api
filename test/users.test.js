@@ -1,31 +1,9 @@
-const mongoose = require('mongoose');
 const app = require('../src/app');
 const User = require('../src/models/user');
 const userHelpers = require('./helpers/user-helpers');
 const DataFactory = require('./helpers/data-factory');
 
 describe('Users', () => {
-  beforeAll(done => {
-    mongoose.connect(
-      process.env.DATABASE_CONN,
-      { useNewUrlParser: true, useUnifiedTopology: true },
-      err => {
-        if (err) {
-          console.log(err);
-        }
-        done();
-      },
-    );
-  });
-  beforeEach(done => {
-    mongoose.connection.db.dropDatabase(done);
-  });
-
-  afterAll(done => {
-    mongoose.connection.close();
-    done();
-  });
-
   it('logs something to the console', done => {
     const a = 3;
     expect(a).toEqual(3);
